@@ -1,9 +1,9 @@
-angular.module('hello', [ 'ngRoute' ])
+angular.module('hello', ['ngRoute', 'app-controllers'])
     .config(function($routeProvider, $httpProvider) {
 
         $routeProvider.when('/', {
             templateUrl : 'templates/home.html',
-            controller : 'home'
+            controller : 'HomeController'
         }).when('/login', {
             templateUrl : 'templates/login.html',
             controller : 'navigation'
@@ -11,10 +11,4 @@ angular.module('hello', [ 'ngRoute' ])
 
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
-    })
-    .controller('home', function($scope, $http) {
-        $http.get('/resource/').success(function(data) {
-            $scope.greeting = data;
-        })
-    })
-    .controller('navigation', function() {});
+    });
