@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/index.html", "/bower_components/**", "/app/**", "/templates/**", "/", "/login").permitAll()
+                .antMatchers("/index.html", "/bower_components/**", "/app/**", "/templates/**", "/", "/login", "/post/list").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)

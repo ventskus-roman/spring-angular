@@ -48,6 +48,13 @@ function NavigationController($rootScope, $scope, $http, $location) {
 
 function HomeController($rootScope, $scope, $http, $location) {
     $scope.greeting = {id: '123', content: 'asdssdf'};
+    $scope.totalItems = 10;
+    $scope.currentPage = 1;
+
+    $http.get('post/list').success(function (data) {
+        $scope.posts = data;
+        console.log(data);
+    });
 }
 
 angular.module('app-controllers', [])
