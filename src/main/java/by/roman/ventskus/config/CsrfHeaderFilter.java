@@ -1,4 +1,4 @@
-package by.roman.ventskus.client.config;
+package by.roman.ventskus.config;
 
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;

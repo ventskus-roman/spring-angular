@@ -1,4 +1,4 @@
-package by.roman.ventskus.client;
+package by.roman.ventskus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,10 +12,10 @@ import java.security.Principal;
  */
 @SpringBootApplication
 @RestController
-public class ClientApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @RequestMapping("/user")

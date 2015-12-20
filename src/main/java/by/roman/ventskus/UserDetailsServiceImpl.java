@@ -1,4 +1,4 @@
-package by.roman.ventskus.client;
+package by.roman.ventskus;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

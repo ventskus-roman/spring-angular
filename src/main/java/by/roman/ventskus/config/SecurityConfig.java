@@ -1,4 +1,4 @@
-package by.roman.ventskus.client.config;
+package by.roman.ventskus.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;

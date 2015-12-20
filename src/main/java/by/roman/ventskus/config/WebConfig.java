@@ -1,4 +1,4 @@
-package by.roman.ventskus.client.config;
+package by.roman.ventskus.config;
 
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
