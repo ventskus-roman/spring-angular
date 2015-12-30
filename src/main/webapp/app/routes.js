@@ -5,5 +5,8 @@ angular.module('hello').config(function ($routeProvider) {
     }).when('/login', {
         templateUrl: 'templates/login.html',
         controller: 'navigation'
+    }).when('/post', {
+        templateUrl: 'templates/post.html',
+        controller: 'HomeController'
     }).otherwise('/');
 });

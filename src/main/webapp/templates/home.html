@@ -1,4 +1,4 @@
-<h1>Greeting</h1>
+<!--<h1>Greeting</h1>
 <div ng-show="authenticated">
     <p>The ID is {{greeting.id}}</p>
 
@@ -16,4 +16,48 @@
 </div>
 
 <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm"
-                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>-->
+
+
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<!-- Navigation -->
+<header class="intro-header" style="background-image: url('app/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Clean Blog</h1>
+                    <hr class="small">
+                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" ng-repeat="post in posts">
+            <div class="post-preview">
+                <a href="#/post">
+                    <h2 class="post-title">
+                        {{post.title}}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{post.description}}
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">{{post.author}}</a> on September 24, 2014</p>
+            </div>
+            <hr>
+            <!-- Pager -->
+            <ul class="pager" ng-if="$last">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

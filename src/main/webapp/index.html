@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Hello AngularJS</title>
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css"/>
-    <link rel="stylesheet" href="app/css/bootstrap.css"/>
+    <link rel="stylesheet" href="app/css/clean-blog.css"/>
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <style type="text/css">
         [ng\:cloak], [ng-cloak], .ng-cloak {
             display: none !important;
@@ -13,14 +22,88 @@
 </head>
 
 <body ng-app="hello" ng-cloak class="ng-cloak">
-<div ng-controller="navigation" class="container">
+<!--<div ng-controller="navigation" class="container">
     <ul class="nav nav-pills" role="tablist">
         <li class="active"><a href="#/">home2</a></li>
         <li><a href="#/login">login</a></li>
         <li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
     </ul>
-</div>
-<div ng-view class="container"></div>
+</div>-->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="post.html">Sample Post</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<div ng-view></div>
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+    </div>
+</footer>
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
 <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
@@ -30,5 +113,7 @@
 <script type="text/javascript" src="app/services.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/routes.js"></script>
+<script src="app/jquery.js"></script>
+<script src="app/clean-blog.js"></script>
 </body>
 </html>

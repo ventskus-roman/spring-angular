@@ -55,8 +55,13 @@ function HomeController($rootScope, $scope, $http, $location) {
         $scope.posts = data;
         console.log(data);
     });
+};
+
+function PostController($scope, $http) {
+    $
 }
 
 angular.module('app-controllers', [])
     .controller('navigation', NavigationController)
-    .controller('HomeController', HomeController);
+    .controller('HomeController', HomeController)
+    .controller('PostController', PostController);
