@@ -50,18 +50,52 @@ function HomeController($rootScope, $scope, $http, $location) {
     $scope.greeting = {id: '123', content: 'asdssdf'};
     $scope.totalItems = 10;
     $scope.currentPage = 1;
+    $scope.offset = 0;
+    var limit = 30;
 
-    $http.get('flat/find').success(function (data) {
-        $scope.flats = data;
-        console.log(data);
+    function update() {
+        console.log('update');
+        $http.get('flat/find', {params: {priceStart: $scope.priceStart, priceEnd: $scope.priceEnd, onlyNearMetro: $scope.onlyNearMetro, offset: $scope.offset, limit: limit}}).success(function (data) {
+            if (data.length > 0) {
+                $scope.flats = data;
+            } else if ($scope.offset > 0) {
+                $scope.offset = $scope.offset - limit;
+            }
+        });
+    }
+
+    $scope.$watch('priceStart + priceEnd + onlyNearMetro', function() {
+        $scope.offset = 0;
+        update();
     });
+    update();
+
+    $scope.next = function() {
+        $scope.offset = $scope.offset + limit;
+        update();
+    }
+
+    $scope.prev = function() {
+        $scope.offset = $scope.offset - limit;
+        update();
+    }
 };
 
 function PostController($scope, $http) {
 
-}
+};
+
+function FlatController($scope, $http, $routeParams) {
+    var id = $routeParams.id;
+
+    $http.get('flat/' + id).success(function (data) {
+        $scope.flat = data;
+    });
+
+};
 
 angular.module('app-controllers', [])
     .controller('navigation', NavigationController)
     .controller('HomeController', HomeController)
-    .controller('PostController', PostController);
+    .controller('PostController', PostController)
+    .controller('FlatController', FlatController);

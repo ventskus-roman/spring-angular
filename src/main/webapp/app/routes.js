@@ -6,7 +6,10 @@ angular.module('hello').config(function ($routeProvider) {
         templateUrl: 'templates/login.html',
         controller: 'navigation'
     }).when('/post', {
-        templateUrl: 'templates/post.html',
+        templateUrl: 'templates/flat.html',
         controller: 'HomeController'
+    }).when('/flat/:id', {
+        templateUrl: 'templates/flat.html',
+        controller: 'FlatController'
     }).otherwise('/');
 });

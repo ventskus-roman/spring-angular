@@ -10,5 +10,3 @@ INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tefdfsst3
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'teasdst', '1970-01-01 00:00:01' )
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tesdfsst2', '1970-01-01 00:00:01' )
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tesdfst3', '1970-01-01 00:00:01' )
-INSERT INTO flat (address, price, description, link, photo_link, creation_date, source) VALUES ('Minsk', 200, 'Blablabla', 'http://blabla.com', 'https://www.google.by/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', '1970-01-01 00:00:01', 'onliner.by')
-INSERT INTO flat (address, price, description, link, photo_link, creation_date, source) VALUES ('Minsk', 200, 'Blablabla', 'http://blabla.com', 'https://www.google.by/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', '1970-01-01 00:00:01', 'onliner.by')

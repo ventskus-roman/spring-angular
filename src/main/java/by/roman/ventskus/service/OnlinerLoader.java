@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Roman Ventskus on 30.12.2015.
@@ -26,21 +28,35 @@ import java.util.List;
 public class OnlinerLoader implements Loader {
 
     private static final String URL = "https://ak.api.onliner.by/search/apartments?bounds%5Blb%5D%5Blat%5D=53.78036940194486&bounds%5Blb%5D%5Blong%5D=27.321624755859375&bounds%5Brt%5D%5Blat%5D=54.01583847496656&bounds%5Brt%5D%5Blong%5D=27.802276611328125";
+    private static final String URL_METRO = "https://ak.api.onliner.by/search/apartments?metro%5B%5D=red_line&metro%5B%5D=blue_line&bounds%5Blb%5D%5Blat%5D=53.78036940194486&bounds%5Blb%5D%5Blong%5D=27.321624755859375&bounds%5Brt%5D%5Blat%5D=54.01583847496656&bounds%5Brt%5D%5Blong%5D=27.802276611328125";
 
     @Autowired
     private OnlinerConverter onlinerConverter;
 
     @Override
     public List<Flat> load() {
-        Connection con = HttpConnection.connect(URL);
-        con.method(Connection.Method.GET).ignoreContentType(true);
-        Connection.Response resp = null;
+        Set<Flat> result = new HashSet<Flat>();
+        result.addAll(load(true));
+        result.addAll(load(false));
+        return new ArrayList<Flat>(result);
+    }
+
+    private List<Flat> load(Boolean nearForMetro) {
         try {
-            resp = con.execute();
+            String url = nearForMetro ? URL_METRO : URL;
+            Connection con = HttpConnection.connect(url);
+            con.method(Connection.Method.GET).ignoreContentType(true);
+            Connection.Response resp = con.execute();
             String body = resp.body();
             OnlinerResponse response = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create().fromJson(body, OnlinerResponse.class);
             List<Apartment> apartments = response.getApartments();
-            return onlinerConverter.convert(apartments);
+            List<Flat> result = onlinerConverter.convert(apartments);
+            if (nearForMetro) {
+                for (Flat flat : result) {
+                    flat.setNearForMetro(true);
+                }
+            }
+            return result;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

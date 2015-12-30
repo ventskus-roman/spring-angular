@@ -5,6 +5,7 @@ import by.roman.ventskus.entity.Flat;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,7 @@ public class OnlinerConverter implements Converter<Apartment, Flat> {
         flat.setCreationDate(apartment.getCreatedAt());
         flat.setSource("http://r.onliner.by/");
         flat.setPrice(apartment.getPrice().getUsd());
+        flat.setParsedDate(new Date());
         return flat;
     }
 }

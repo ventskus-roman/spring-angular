@@ -39,29 +39,40 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row" ng-cloak class="ng-cloak">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" ng-repeat="flat in flats">
-            <div class="post-preview">
-                <a href="#/post">
-                    <h2 class="post-title">
-                        {{flat.address}}
-                    </h2>
-                    <h3 class="post-subtitle">
-                        {{flat.price}}$
-                    </h3>
-                    <h3 class="post-subtitle">
-                        {{flat.description}}
-                    </h3>
-                    <img src="{{flat.photoLink}}"/>
-                </a>
-                <p class="post-meta"><a href="#">{{flat.source}}</a>, {{flat.creationDate | date: 'd MMMM yyyy, hh:mm'}}</p>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <form>
+                <input placeholder="Цена от, $" ng-model="priceStart">
+                <input placeholder="до" ng-model="priceEnd">
+                <input type="checkbox" class="check-box" ng-model="onlyNearMetro">
+                <span>только рядом с метро</span>
+            </form>
+            <div ng-repeat="flat in flats">
+                <div class="post-preview">
+                    <a href="{{flat.link}}" target="_blank">
+                        <h2 class="post-title">
+                            {{flat.address}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{flat.price}}$
+                        </h3>
+                        <h3 class="post-subtitle">
+                            {{flat.description}}
+                        </h3>
+                        <img src="{{flat.photoLink}}"/>
+                    </a>
+                    <p class="post-meta"><a href="#">{{flat.source}}</a>, {{flat.parsedDate | date: 'd MMMM yyyy, hh:mm'}}</p>
+                </div>
+                <hr>
+                <!-- Pager -->
+                <ul class="pager" ng-if="$last">
+                    <li ng-if="offset > 0">
+                        <a href="" ng-click="prev()">&larr; Раньше</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="next()">Дальше &rarr;</a>
+                    </li>
+                </ul>
             </div>
-            <hr>
-            <!-- Pager -->
-            <ul class="pager" ng-if="$last">
-                <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

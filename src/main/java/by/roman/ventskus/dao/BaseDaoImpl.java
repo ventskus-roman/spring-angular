@@ -34,7 +34,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T get(Long id) {
-        throw new RuntimeException("Not implemented yet");
+        return (T) entityManager.find(entityClass, id);
     }
 
     @Override
@@ -44,6 +44,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public void save(T entity) {
-        throw new RuntimeException("Not implemented yet");
+        entityManager.merge(entity);
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 }
