@@ -51,14 +51,14 @@ function HomeController($rootScope, $scope, $http, $location) {
     $scope.totalItems = 10;
     $scope.currentPage = 1;
 
-    $http.get('post/list').success(function (data) {
-        $scope.posts = data;
+    $http.get('flat/find').success(function (data) {
+        $scope.flats = data;
         console.log(data);
     });
 };
 
 function PostController($scope, $http) {
-    $
+
 }
 
 angular.module('app-controllers', [])

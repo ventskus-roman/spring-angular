@@ -38,18 +38,22 @@
 </header>
 <!-- Main Content -->
 <div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" ng-repeat="post in posts">
+    <div class="row" ng-cloak class="ng-cloak">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" ng-repeat="flat in flats">
             <div class="post-preview">
                 <a href="#/post">
                     <h2 class="post-title">
-                        {{post.title}}
+                        {{flat.address}}
                     </h2>
                     <h3 class="post-subtitle">
-                        {{post.description}}
+                        {{flat.price}}$
                     </h3>
+                    <h3 class="post-subtitle">
+                        {{flat.description}}
+                    </h3>
+                    <img src="{{flat.photoLink}}"/>
                 </a>
-                <p class="post-meta">Posted by <a href="#">{{post.author}}</a> on September 24, 2014</p>
+                <p class="post-meta"><a href="#">{{flat.source}}</a>, {{flat.creationDate | date: 'd MMMM yyyy, hh:mm'}}</p>
             </div>
             <hr>
             <!-- Pager -->
