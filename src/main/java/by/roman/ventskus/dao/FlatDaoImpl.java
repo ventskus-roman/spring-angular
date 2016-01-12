@@ -49,7 +49,7 @@ public class FlatDaoImpl extends BaseDaoImpl<Flat> implements FlatDao {
             Predicate predicateNearForMetro = filter.getOnlyNearMetro() != null && filter.getOnlyNearMetro() ? cb.isTrue(rootEntry.<Boolean>get("nearForMetro")) : defaultPredicate;
             all = all.where(cb.and(cb.and(predicateGe, predicateLe), predicateNearForMetro));
         }
-        all = all.orderBy(cb.asc(rootEntry.get("parsedDate")));
+        all = all.orderBy(cb.desc(rootEntry.get("parsedDate")));
         TypedQuery<Flat> allQuery = getEntityManager().createQuery(all).setFirstResult(filter.getOffset()).setMaxResults(filter.getLimit());
         return allQuery.getResultList();
     }

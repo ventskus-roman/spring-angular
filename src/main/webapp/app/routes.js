@@ -11,5 +11,11 @@ angular.module('hello').config(function ($routeProvider) {
     }).when('/flat/:id', {
         templateUrl: 'templates/flat.html',
         controller: 'FlatController'
+    }).when('/about', {
+        templateUrl: 'templates/about.html',
+        controller: 'AboutController'
+    }).when('/contacts', {
+        templateUrl: 'templates/contacts.html',
+        controller: 'ContactsController'
     }).otherwise('/');
 });

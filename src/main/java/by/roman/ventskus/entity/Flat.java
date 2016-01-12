@@ -20,7 +20,7 @@ public class Flat {
     @Column
     private String address;
 
-    @Column
+    @Column(nullable = false)
     private Integer price;
 
     @Column
@@ -35,14 +35,14 @@ public class Flat {
     @Column(name = "creation_date")
     private Date creationDate;
 
-    @Column(name = "parsed_date")
+    @Column(name = "parsed_date", nullable = false)
     private Date parsedDate;
 
-    @Column
+    @Column(nullable = false)
     private String source;
 
-    @Column(name = "near_for_metro")
-    private Boolean nearForMetro;
+    @Column(name = "near_for_metro", nullable = false)
+    private Boolean nearForMetro = false;
 
     public Long getId() {
         return id;
@@ -145,7 +145,6 @@ public class Flat {
         if (link != null ? !link.equals(flat.link) : flat.link != null) return false;
         if (description != null ? !description.equals(flat.description) : flat.description != null) return false;
         if (photoLink != null ? !photoLink.equals(flat.photoLink) : flat.photoLink != null) return false;
-        if (creationDate != null ? !creationDate.equals(flat.creationDate) : flat.creationDate != null) return false;
         return !(source != null ? !source.equals(flat.source) : flat.source != null);
 
     }
@@ -158,7 +157,6 @@ public class Flat {
         result = 31 * result + (link != null ? link.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (photoLink != null ? photoLink.hashCode() : 0);
-        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (source != null ? source.hashCode() : 0);
         return result;
     }

@@ -94,8 +94,18 @@ function FlatController($scope, $http, $routeParams) {
 
 };
 
+function AboutController($scope) {
+
+};
+
+function ContactsController($scope) {
+
+};
+
 angular.module('app-controllers', [])
     .controller('navigation', NavigationController)
     .controller('HomeController', HomeController)
     .controller('PostController', PostController)
-    .controller('FlatController', FlatController);
+    .controller('FlatController', FlatController)
+    .controller('AboutController', AboutController)
+    .controller('ContactsController', ContactsController);
