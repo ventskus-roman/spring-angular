@@ -51,7 +51,6 @@ public class IrrLoader implements Loader {
         String price = findPrice(flatBlock);
         String photoLink = findPhotoLink(flatBlock);
         flat.setLink(link);
-        flat.setDescription(description);
         flat.setPrice(Integer.parseInt(price.trim()));
         flat.setPhotoLink(photoLink);
         flat.setSource("irr.by");
