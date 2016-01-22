@@ -37,7 +37,7 @@ public class Aggregator {
         flats.removeAll(originalList);
         for (Flat flat : flats) {
             flatDao.save(flat);
-            //notificationService.notify(flat);
+            notificationService.notify(flat);
         }
 
     }

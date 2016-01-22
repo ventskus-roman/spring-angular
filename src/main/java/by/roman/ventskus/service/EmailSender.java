@@ -1,6 +1,8 @@
 package by.roman.ventskus.service;
 
 import by.roman.ventskus.entity.Flat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +22,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
     private static final String TEMPLATE = "<h2>%s$</h2><br/><h3>%s</h3><br/><a href=\"%s\">%s</a><br/><img src=\"%s\"/>";
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmailSender.class);
 
     @Autowired
     private JavaMailSender mailSender;
@@ -35,7 +38,7 @@ public class EmailSender {
             this.mailSender.send(message);
         }
         catch (Exception e) {
-            throw new RuntimeException(e);
+            LOGGER.warn("Can`t sent mail on " + address, e);
         }
     }
 

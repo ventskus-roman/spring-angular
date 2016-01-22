@@ -18,8 +18,10 @@ public class MailConfig {
         JavaMailSenderImpl sender = new JavaMailSenderImpl();
         sender.setHost("smtp.gmail.com");
         sender.setPort(587);
-        sender.setUsername("*");
-        sender.setPassword("*");
+        String login = System.getProperty("mail.login");
+        String password = System.getProperty("mail.password");
+        sender.setUsername(login);
+        sender.setPassword(password);
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", true);

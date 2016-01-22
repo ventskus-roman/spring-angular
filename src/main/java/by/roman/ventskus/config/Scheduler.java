@@ -14,7 +14,7 @@ public class Scheduler {
     @Autowired
     private Aggregator aggregator;
 
-    @Scheduled(fixedRate = 5 * 60 * 1000)
+    @Scheduled(fixedRate = 10 * 60 * 1000)
     public void reportCurrentTime() {
         aggregator.aggregate();
     }
