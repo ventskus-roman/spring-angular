@@ -6,13 +6,9 @@ import java.util.Date;
 /**
  * Created by Roman Ventskus on 30.12.2015.
  */
-@Entity
+@javax.persistence.Entity
 @Table(name = "flat")
-public class Flat {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Flat extends BaseEntity {
 
     @Column
     private String city;
@@ -26,7 +22,7 @@ public class Flat {
     @Column
     private String link;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "photo_link")
@@ -43,14 +39,6 @@ public class Flat {
 
     @Column(name = "near_for_metro", nullable = false)
     private Boolean nearForMetro = false;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCity() {
         return city;

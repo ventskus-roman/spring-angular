@@ -7,11 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table
-public class Subscription {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Subscription extends BaseEntity {
 
     @Column(name = "price_start", nullable = false)
     private Integer priceStart;
@@ -24,6 +20,28 @@ public class Subscription {
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "active", nullable = false)
+    private Boolean active;
+
+    @Column(name = "accept_code", nullable = false)
+    private String acceptCode;
+
+    @Column(name = "user_id")
+    private String userId;
+
+    public Subscription() {
+    }
+
+    public Subscription(Integer priceStart, Integer priceEnd, Boolean onlyNearMetro, String email, Boolean active, String acceptCode, String userId) {
+        this.priceStart = priceStart;
+        this.priceEnd = priceEnd;
+        this.onlyNearMetro = onlyNearMetro;
+        this.email = email;
+        this.active = active;
+        this.acceptCode = acceptCode;
+        this.userId = userId;
+    }
 
     public Integer getPriceStart() {
         return priceStart;
@@ -49,19 +67,35 @@ public class Subscription {
         this.onlyNearMetro = onlyNearMetro;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getAcceptCode() {
+        return acceptCode;
+    }
+
+    public void setAcceptCode(String acceptCode) {
+        this.acceptCode = acceptCode;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -1,5 +1,7 @@
 package by.roman.ventskus.dto;
 
+import java.util.List;
+
 /**
  * Created by Roman Ventskus on 31.12.2015.
  */
@@ -10,6 +12,7 @@ public class Filter {
     private Boolean onlyNearMetro;
     private Integer offset;
     private Integer limit;
+    private List<String> metro;
 
     public Integer getPriceStart() {
         return priceStart;
@@ -49,5 +52,13 @@ public class Filter {
 
     public void setLimit(Integer limit) {
         this.limit = limit;
+    }
+
+    public List<String> getMetro() {
+        return metro;
+    }
+
+    public void setMetro(List<String> metro) {
+        this.metro = metro;
     }
 }

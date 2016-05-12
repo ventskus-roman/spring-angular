@@ -1,5 +1,7 @@
 package by.roman.ventskus.dao;
 
+import by.roman.ventskus.entity.BaseEntity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -11,7 +13,7 @@ import java.util.List;
 /**
  * Created by Roman Ventskus on 20.12.2015.
  */
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
     private final Class entityClass;
 
@@ -44,7 +46,11 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public void save(T entity) {
-        entityManager.merge(entity);
+        if (entity.getId() == null) {
+            entityManager.persist(entity);
+        } else {
+            entityManager.merge(entity);
+        }
     }
 
     public EntityManager getEntityManager() {

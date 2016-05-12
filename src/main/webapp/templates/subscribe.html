@@ -1,0 +1,30 @@
+<header class="intro-header" style="background-image: url('app/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Все квартиры Минска</h1>
+                    <hr class="small">
+                    <span class="subheading">Аггрегатор объявлений</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row" ng-cloak class="ng-cloak">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <form ng-submit="subscribe()">
+                Узнай первым о новых предложениях!
+                <input placeholder="Email" ng-model="email" type="email">
+                <input placeholder="Цена от, $" ng-model="priceStart">
+                <input placeholder="до" ng-model="priceEnd">
+                <input type="checkbox" class="check-box" ng-model="onlyNearMetro">
+                <span>только рядом с метро</span>
+                <button type="submit" class="btn btn-primary">Подписаться на обновления</button>
+            </form>
+            <div class="message" ng-if="message">{{message}}</div>
+        </div>
+    </div>
+</div>

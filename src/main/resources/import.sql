@@ -10,5 +10,3 @@ INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tefdfsst3
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'teasdst', '1970-01-01 00:00:01' )
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tesdfsst2', '1970-01-01 00:00:01' )
 INSERT INTO post (author, text, creation_date) VALUES ('Ivanov Ivan', 'tesdfst3', '1970-01-01 00:00:01' )
-INSERT INTO subscription (price_start, price_end, only_near_metro, email) VALUES (200, 300, true, 'scofield665@gmail.com')
-INSERT INTO subscription (price_start, price_end, only_near_metro, email) VALUES (200, 300, true, 'dormidontn1@gmail.com')

@@ -15,8 +15,11 @@ import java.util.List;
 @Service
 public class NofiticationServiceImpl implements NotificationService {
 
+    /*@Autowired
+    private EmailSender emailSender;*/
+
     @Autowired
-    private EmailSender emailSender;
+    private TelegramSender telegramSender;
 
     @Autowired
     private SubscriptionDao subscriptionDao;
@@ -32,7 +35,7 @@ public class NofiticationServiceImpl implements NotificationService {
     private void sendIfNeed(Subscription subscription, List<Flat> flats) {
         List<Flat> needToSend = getMatched(flats, subscription);
         if (!needToSend.isEmpty()) {
-            emailSender.sendFlats(needToSend, subscription);
+            telegramSender.sendFlats(needToSend, subscription);
         }
     }
 

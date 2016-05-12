@@ -17,5 +17,8 @@ angular.module('hello').config(function ($routeProvider) {
     }).when('/contacts', {
         templateUrl: 'templates/contacts.html',
         controller: 'ContactsController'
+    }).when('/subscribe', {
+        templateUrl: 'templates/subscribe.html',
+        controller: 'SubscribeController'
     }).otherwise('/');
 });

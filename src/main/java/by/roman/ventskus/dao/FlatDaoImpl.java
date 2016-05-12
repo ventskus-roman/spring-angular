@@ -2,11 +2,8 @@ package by.roman.ventskus.dao;
 
 import by.roman.ventskus.dto.Filter;
 import by.roman.ventskus.entity.Flat;
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -47,7 +44,9 @@ public class FlatDaoImpl extends BaseDaoImpl<Flat> implements FlatDao {
             Predicate predicateGe = filter.getPriceStart() != null ? cb.ge(rootEntry.<Number>get("price"), filter.getPriceStart()) : defaultPredicate;
             Predicate predicateLe = filter.getPriceEnd() != null ? cb.le(rootEntry.<Number>get("price"), filter.getPriceEnd()) : defaultPredicate;
             Predicate predicateNearForMetro = filter.getOnlyNearMetro() != null && filter.getOnlyNearMetro() ? cb.isTrue(rootEntry.<Boolean>get("nearForMetro")) : defaultPredicate;
-            all = all.where(cb.and(cb.and(predicateGe, predicateLe), predicateNearForMetro));
+            String metroString = filter.getMetro() == null ? "" : filter.getMetro().stream().reduce((s, s2) -> s + " " + s2).toString();
+            Predicate metro = !metroString.isEmpty() ? cb.like(rootEntry.get("address"), "%" + metroString + "%") : defaultPredicate;
+            all = all.where(cb.and(cb.and(cb.and(predicateGe, predicateLe), predicateNearForMetro), metro));
         }
         all = all.orderBy(cb.desc(rootEntry.get("parsedDate")));
         TypedQuery<Flat> allQuery = getEntityManager().createQuery(all).setFirstResult(filter.getOffset()).setMaxResults(filter.getLimit());

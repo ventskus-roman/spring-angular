@@ -2,8 +2,8 @@ package by.roman.ventskus.service;
 
 import by.roman.ventskus.dao.FlatDao;
 import by.roman.ventskus.entity.Flat;
+import by.roman.ventskus.geo.address.Parser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +35,10 @@ public class Aggregator {
         List<Flat> irrFlats = irrLoader.load();
         flats.addAll(irrFlats);
         flats.removeAll(originalList);
+        Parser parser = new Parser();
         for (Flat flat : flats) {
+            /*String parsedAddress = parser.parseAddress(flat.getAddress());
+            flat.setAddress(parsedAddress);*/
             flatDao.save(flat);
         }
         notificationService.notify(flats);

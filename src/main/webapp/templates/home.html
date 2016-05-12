@@ -40,11 +40,29 @@
 <div class="container">
     <div class="row" ng-cloak class="ng-cloak">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <form>
+            <form class="form-horizontal">
                 <input placeholder="Цена от, $" ng-model="priceStart">
                 <input placeholder="до" ng-model="priceEnd">
                 <input type="checkbox" class="check-box" ng-model="onlyNearMetro">
                 <span>только рядом с метро</span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <input type="checkbox" class="check-box" ng-click="selectAll(moscovskaya)"><span><b>Московская линия</b></span>
+                        </div>
+                        <div ng-repeat="station in moscovskaya">
+                            <input type="checkbox" class="check-box" ng-model="station.selected"><span>{{station.name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <input type="checkbox" class="check-box" ng-click="selectAll(autozavodskaya)"><span><b>Автозаводская линия</b></span>
+                        </div>
+                        <div ng-repeat="station in autozavodskaya">
+                            <input type="checkbox" class="check-box" ng-model="station.selected"><span>{{station.name}}</span>
+                        </div>
+                    </div>
+                </div>
             </form>
             <div ng-repeat="flat in flats">
                 <div class="post-preview">

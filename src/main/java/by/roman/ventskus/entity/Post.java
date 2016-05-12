@@ -6,13 +6,9 @@ import java.util.Date;
 /**
  * Created by Roman Ventskus on 20.12.2015.
  */
-@Entity
+@javax.persistence.Entity
 @Table(name = "post")
-public class Post {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Post extends BaseEntity {
 
     @Column(name = "author")
     private String author;
@@ -51,14 +47,6 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
