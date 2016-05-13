@@ -1,19 +1,14 @@
 package by.roman.ventskus.service;
 
-import by.roman.ventskus.converter.Converter;
 import by.roman.ventskus.converter.OnlinerConverter;
 import by.roman.ventskus.dto.onliner.Apartment;
 import by.roman.ventskus.dto.onliner.OnlinerResponse;
 import by.roman.ventskus.entity.Flat;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.helper.HttpConnection;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

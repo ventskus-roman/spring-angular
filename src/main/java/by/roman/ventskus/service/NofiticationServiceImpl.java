@@ -15,9 +15,6 @@ import java.util.List;
 @Service
 public class NofiticationServiceImpl implements NotificationService {
 
-    /*@Autowired
-    private EmailSender emailSender;*/
-
     @Autowired
     private TelegramSender telegramSender;
 
