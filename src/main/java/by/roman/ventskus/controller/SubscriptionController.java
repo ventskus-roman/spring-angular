@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by Roman Ventskus on 23.04.2016.
  */
 @BotController(value = "/subscribe")
-public class SimpleController implements Controller {
+public class SubscriptionController implements Controller {
 
     private Parameter startPrice = new Parameter("startPrice");
     private Parameter endPrice = new Parameter("endPrice");
@@ -26,7 +26,7 @@ public class SimpleController implements Controller {
     @Override
     public Response process(Request request, Map<Parameter, String> params) {
         if (!params.containsKey(startPrice)) {
-            return new AppealInParameterResponse("Начиная от какой цены искать квартиры?", startPrice, request.getCommand(), request.getUser());
+            return new AppealInParameterResponse("Начиная от какой цены искать квартиры?  (в долларах, например 200)", startPrice, request.getCommand(), request.getUser());
         } else if (!params.containsKey(endPrice)) {
             return new AppealInParameterResponse("До какой цены?", endPrice, request.getCommand(), request.getUser());
         } else if (!params.containsKey(onlyNearMetro)) {
@@ -36,7 +36,7 @@ public class SimpleController implements Controller {
         Subscription subscription = new Subscription(Integer.parseInt(params.get(startPrice)), Integer.parseInt(params.get(endPrice)), parseBoolean(params.get(onlyNearMetro)),
                 "", true, "", request.getUser().getId());
         subscriptionService.create(subscription);
-        Response response = new SingleMessageResponse("Ваша подписка сохранена!", request.getCommand(),request.getUser());
+        Response response = new SingleMessageResponse("Ваша подписка сохранена! Я буду присылать вам новые квартиры сразу же, как только они появятся на сайтах onliner.by и irr.by! Удачной охоты!", request.getCommand(),request.getUser());
         return response;
     }
 
