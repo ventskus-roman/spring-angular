@@ -36,14 +36,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public boolean delete(Long id, String code) {
-        Subscription subscription = subscriptionDao.get(id);
-        if (subscription.getAcceptCode().equals(code)) {
-            subscriptionDao.delete(id);
-            return true;
-        } else {
-            return false;
-        }
+    public boolean delete(Long id) {
+        subscriptionDao.delete(id);
+        return true;
     }
 
     @Override
@@ -74,5 +69,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public Subscription get(Long id) {
         return subscriptionDao.get(id);
+    }
+
+    @Override
+    public Subscription findByUserId(String userId) {
+        return subscriptionDao.findByUserId(userId);
     }
 }

@@ -5,22 +5,22 @@ package by.roman.ventskus.dto.onliner;
  */
 public class Price {
 
-    private Integer usd;
-    private Integer byr;
+    private Integer amount;
+    //private Integer byr;
 
-    public Integer getUsd() {
-        return usd;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setUsd(Integer usd) {
-        this.usd = usd;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
-    public Integer getByr() {
+    /*public Integer getByr() {
         return byr;
     }
 
     public void setByr(Integer byr) {
         this.byr = byr;
-    }
+    }*/
 }

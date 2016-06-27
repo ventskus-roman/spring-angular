@@ -8,4 +8,6 @@ import by.roman.ventskus.entity.Subscription;
 public interface SubscriptionDao extends BaseDao<Subscription> {
 
     Boolean isEmailRegistered(String email);
+
+    Subscription findByUserId(String userId);
 }

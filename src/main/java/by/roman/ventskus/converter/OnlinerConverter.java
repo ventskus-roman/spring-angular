@@ -40,7 +40,7 @@ public class OnlinerConverter implements Converter<Apartment, Flat> {
         flat.setPhotoLink(apartment.getPhoto());
         flat.setCreationDate(apartment.getCreatedAt());
         flat.setSource("http://r.onliner.by/");
-        flat.setPrice(apartment.getPrice().getUsd());
+        flat.setPrice(apartment.getPrice().getAmount());
         flat.setParsedDate(new Date());
         loadInfoFromUrl(flat);
         return flat;

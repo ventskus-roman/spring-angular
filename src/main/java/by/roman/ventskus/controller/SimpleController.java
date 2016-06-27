@@ -33,11 +33,21 @@ public class SimpleController implements Controller {
             return new AppealInParameterResponse("Только возле метро?", onlyNearMetro, request.getCommand(), request.getUser());
         }
         SubscriptionService subscriptionService = ApplicationContextProvider.getApplicationContext().getBean("subscriptionServiceImpl", SubscriptionService.class);
-        Subscription subscription = new Subscription(Integer.parseInt(params.get(startPrice)), Integer.parseInt(params.get(endPrice)), Boolean.parseBoolean(params.get(onlyNearMetro)),
+        Subscription subscription = new Subscription(Integer.parseInt(params.get(startPrice)), Integer.parseInt(params.get(endPrice)), parseBoolean(params.get(onlyNearMetro)),
                 "", true, "", request.getUser().getId());
         subscriptionService.create(subscription);
         Response response = new SingleMessageResponse("Ваша подписка сохранена!", request.getCommand(),request.getUser());
         return response;
+    }
+
+    private Boolean parseBoolean(String onlyNearMetro) {
+        if (onlyNearMetro.toLowerCase().equals("yes") || onlyNearMetro.toLowerCase().equals("no")) {
+            return Boolean.parseBoolean(onlyNearMetro);
+        } else if (onlyNearMetro.toLowerCase().contains("да")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

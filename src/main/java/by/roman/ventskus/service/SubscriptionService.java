@@ -11,12 +11,14 @@ public interface SubscriptionService {
 
     String create(Subscription subscription);
 
-    boolean delete(Long id, String code);
+    boolean delete(Long id);
 
     boolean updateAndActivate(Subscription subscription);
 
     List<Subscription> getAll();
 
     Subscription get(Long id);
+
+    Subscription findByUserId(String userId);
 
 }

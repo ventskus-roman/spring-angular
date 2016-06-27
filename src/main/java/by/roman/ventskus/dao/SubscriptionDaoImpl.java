@@ -28,4 +28,15 @@ public class SubscriptionDaoImpl extends BaseDaoImpl<Subscription> implements Su
         TypedQuery<Subscription> allQuery = getEntityManager().createQuery(all);
         return !allQuery.getResultList().isEmpty();
     }
+
+    @Override
+    public Subscription findByUserId(String userId) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Subscription> cq = cb.createQuery(Subscription.class);
+        Root<Subscription> rootEntry = cq.from(Subscription.class);
+
+        CriteriaQuery<Subscription> all = cq.select(rootEntry).where(cb.equal(rootEntry.get("userId"), userId));
+        TypedQuery<Subscription> allQuery = getEntityManager().createQuery(all);
+        return allQuery.getSingleResult();
+    }
 }
